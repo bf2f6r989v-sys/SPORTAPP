@@ -1228,9 +1228,8 @@
           });
         });
       });
-      const csv = rows.map(r => r.join(';')).join('
-');
-      const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+      const csv = rows.map(r => r.join(';')).join('\n');
+      const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -1351,7 +1350,7 @@
                   <h3 class="card-title">${escapeHtml(ex.name)}</h3>
                   <div class="muted">Cible : ${escapeHtml(ex.targetReps)} reps · Repos : ${ex.restSec}s</div>
                 </div>
-                <button class="btn-secondary btn-sm" onclick="startTimer(${ex.restSec || 120}, '${escapeHtml(ex.name).replace(/'/g, "\'")}')">⏱️ ${ex.restSec}s</button>
+                <button class="btn-secondary btn-sm" onclick="startTimer(${ex.restSec || 120}, '${escapeHtml(ex.name).replace(/'/g, "\\'")}')">⏱️ ${ex.restSec}s</button>
               </div>
               ${eqBadgeHtml(ex.equipment)}
 

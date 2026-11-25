@@ -1,4 +1,4 @@
-const CACHE_NAME = 'irontrack-v1';
+const CACHE_NAME = 'irontrack-v2';
 const ASSETS = [
   './',
   './index.html',
